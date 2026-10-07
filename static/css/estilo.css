@@ -1,0 +1,91 @@
+/* Paleta extraída da logo Guardian */
+:root {
+  --g-escuro: #0a3152;
+  --g-medio:  #1e5677;
+  --g-azul:   #1b6a9c;
+  --g-claro:  #2b9ad8;
+  --g-prata:  #c9cdd1;
+  --bs-link-color-rgb: 27, 106, 156;
+  --bs-link-hover-color-rgb: 10, 49, 82;
+}
+
+/* ---------- Fundo com a logo (marca d'água) ---------- */
+body { background-color: #dfe3e7; }
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: -1;
+  background: url("../imgs/logo.jpg") center / contain no-repeat;
+  opacity: .13;
+  pointer-events: none;
+  /* esmaece as bordas para a foto da logo não aparecer como um retângulo */
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 72%);
+  mask-image: radial-gradient(ellipse at center, #000 35%, transparent 72%);
+}
+
+/* ---------- Barra superior e rodapé ---------- */
+.bg-guardian { background: linear-gradient(90deg, var(--g-escuro), var(--g-medio)); }
+.navbar-brand { font-weight: 700; letter-spacing: .5px; }
+.navbar .dropdown-item:active { background-color: var(--g-azul); }
+
+/* ---------- Botões e destaques ---------- */
+.btn-guardian {
+  --bs-btn-color: #fff; --bs-btn-bg: var(--g-azul); --bs-btn-border-color: var(--g-azul);
+  --bs-btn-hover-color: #fff; --bs-btn-hover-bg: var(--g-escuro); --bs-btn-hover-border-color: var(--g-escuro);
+  --bs-btn-active-color: #fff; --bs-btn-active-bg: var(--g-escuro); --bs-btn-active-border-color: var(--g-escuro);
+}
+.btn-outline-guardian {
+  --bs-btn-color: var(--g-azul); --bs-btn-border-color: var(--g-azul);
+  --bs-btn-hover-color: #fff; --bs-btn-hover-bg: var(--g-azul); --bs-btn-hover-border-color: var(--g-azul);
+  --bs-btn-active-color: #fff; --bs-btn-active-bg: var(--g-escuro); --bs-btn-active-border-color: var(--g-escuro);
+}
+.btn-primary {
+  --bs-btn-bg: var(--g-claro); --bs-btn-border-color: var(--g-claro);
+  --bs-btn-hover-bg: var(--g-azul); --bs-btn-hover-border-color: var(--g-azul);
+  --bs-btn-active-bg: var(--g-escuro); --bs-btn-active-border-color: var(--g-escuro);
+}
+.text-guardian { color: var(--g-azul) !important; }
+.form-control:focus, .form-select:focus {
+  border-color: var(--g-claro); box-shadow: 0 0 0 .2rem rgba(43, 154, 216, .25);
+}
+
+/* ---------- Cartões e tabelas ---------- */
+.card { background: rgba(255, 255, 255, .95); border-color: var(--g-prata); box-shadow: 0 2px 10px rgba(10, 49, 82, .08); }
+h1 { color: var(--g-escuro); font-weight: 700; }
+.table thead th { color: var(--g-escuro); border-bottom: 2px solid var(--g-claro); }
+
+/* ---------- Fotos ---------- */
+.thumb { width: 44px; height: 44px; object-fit: cover; border-radius: 50%; border: 2px solid var(--g-prata); }
+.foto-preview { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; border: 2px solid var(--g-prata); display: block; }
+
+/* ---------- Login: logo grande à esquerda, cartão à direita ---------- */
+body.pagina-login {
+  min-height: 100vh; display: flex; align-items: center; justify-content: flex-end;
+  padding: 2rem 8vw; background-color: #bfc3c6;
+}
+body.pagina-login::before { opacity: 1; background-position: 18% center; -webkit-mask-image: none; mask-image: none; }
+.login-card { width: 440px; max-width: 100%; background: rgba(255, 255, 255, .93); }
+.login-card .card-header { background: linear-gradient(90deg, var(--g-escuro), var(--g-medio)); color: #fff; letter-spacing: 1px; }
+@media (max-width: 991px) {
+  body.pagina-login { justify-content: center; padding: 1rem; }
+  body.pagina-login::before { opacity: .35; background-position: center; }
+}
+
+/* ---------- Visual moderno ---------- */
+.card { border-radius: 1rem; border: 1px solid rgba(255, 255, 255, .7); backdrop-filter: blur(6px); }
+.btn { border-radius: 50rem; padding-inline: 1.1rem; font-weight: 500; }
+.navbar { box-shadow: 0 2px 14px rgba(10, 49, 82, .3); }
+.table-hover tbody tr:hover, .table-striped tbody tr:hover { background-color: rgba(43, 154, 216, .08); }
+
+/* ---------- Cartões do painel ---------- */
+.painel-card { position: relative; overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+.painel-card::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+  background: linear-gradient(90deg, var(--g-claro), var(--g-escuro));
+}
+.painel-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(10, 49, 82, .2); }
+.painel-icone {
+  width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
+  font-size: 1.6rem; color: #fff; background: linear-gradient(135deg, var(--g-claro), var(--g-escuro));
+  box-shadow: 0 6px 14px rgba(27, 106, 156, .35);
+}
+.painel-numero { font-size: 2.6rem; font-weight: 700; line-height: 1; color: var(--g-escuro); }
